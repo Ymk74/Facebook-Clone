@@ -28,6 +28,23 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+RELATIONSHIP = (
+    ("single","Single"),
+    ("married","Married"),
+)
+
+
+
+
+
+# هذا الكود يُستخدم في إعداد مسار (path) لتخزين الملفات المرفوعة بواسطة مستخدمين. يستخدم هذا الكود في نظام إطار العمل (framework) Django لتحديد مكان تخزين الملفات.
+#change path save all file
+def user_directory_path(instance, filename):
+    # 200.jpg
+    ext = filename.split('.')[-1]    # split------> .jpg
+    filename = "%s.%s" % (instance.user.id, ext)
+    return 'user_{0}/{1}'.format(instance.user.id,  filename)
+
 
 
 RELATIONSHIP = (
