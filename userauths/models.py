@@ -83,5 +83,13 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    # import shortuuid
+    def save(self, *args , **kwargs):
+        if self.slug == "" or self.slug == None:
+            uuid_key = shortuuid.uuid()   # user_name-bbnmbvcfxgfhfjgtfrqwertyhbfdsdfgdfvgb
+            uniqueid = uuid_key[:2]    # user_qw
+            self.slug = slugify(self.full_name) + '-' + str(uniqueid.lower()) #islam-hamdy-qwer
+        super(Profile, self).save(*args, **kwargs)
+
 
 # create user profile automatic
