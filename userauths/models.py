@@ -86,9 +86,9 @@ class Profile(models.Model):
     # import shortuuid
     def save(self, *args , **kwargs):
         if self.slug == "" or self.slug == None:
-            uuid_key = shortuuid.uuid()   # user_name-bbnmbvcfxgfhfjgtfrqwertyhbfdsdfgdfvgb
-            uniqueid = uuid_key[:2]    # user_qw
-            self.slug = slugify(self.full_name) + '-' + str(uniqueid.lower()) #islam-hamdy-qwer
+            uuid_key = shortuuid.uuid()  
+            uniqueid = uuid_key[:2] 
+            self.slug = slugify(self.full_name) + '-' + str(uniqueid.lower()) 
         super(Profile, self).save(*args, **kwargs)
 
 
