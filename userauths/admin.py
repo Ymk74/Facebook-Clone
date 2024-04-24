@@ -1,5 +1,15 @@
 from django.contrib import admin
-from userauths.models import User, Profile
+from userauths.models import User , Profile 
 
-admin.site.register(User)
-admin.site.register(Profile)
+
+class UserCustomAdmin(admin.ModelAdmin):
+    list_display = ['username', 'full_name', 'username', 'gender', 'email']
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'user', 'verified']
+    list_editable = ['verified']
+
+
+admin.site.register(User, UserCustomAdmin)
+admin.site.register(Profile, ProfileAdmin)
